@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NightOut">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" charset="utf-8">
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyDDg4fuxd9XO7BF_mQAOSnU53M7bL-Z_Ag&libraries=places"></script>
+  <script src="http://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
+  <script src="/js/dashboard/dashboard.js" charset="utf-8"></script>
+</head>
+<body ng-controller="dashCtrl as dCtrl">
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns">
+          <a href="/" id="logo"></a>
+          <nav id="nav-menu">
+            <a href="#" id="menu-icon"></a>
+            <ul id="menu">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <section class="billboard">
+      <div class="row">
+        <div class="twelve columns greeting">
+          <h1>Get your plan to a Great NightOut!</h1>
+        </div>
+      </div>
+    </section>
+    <div class="row getPlans">
+      <div class="six columns">
+        <h4>Single Ready To Mingle</h4>
+        <a href="/dashboard/singles" class="button button-primary">Get Plan</a>
+      </div>
+      <div class="six columns">
+        <h4>Have A Date Night</h4>
+        <a href="/dashboard/couples" class="button button-primary">Get Plan</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <h1>Saved Plans</h1>
+      </div>
+    </div>
+    <div class="row"  ng-repeat="plan in dCtrl.plans">
+      <div class="four columns" ng-repeat="site in plan.sites">
+        <img src="{{site.icon}}" alt="Icon">
+        <h5>{{site.type}}</h5>
+        <h4>{{site.name}}</h4>
+        <p>{{site.vicinity}}</p>
+      </div>
+      <div class="row deleteSection">
+        <div class="twelve columns">
+          <button class="button deleteButton" ng-click="dCtrl.remove(plan._id)">Delete Plan</a>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</body>
+</html>
