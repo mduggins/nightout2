@@ -19,7 +19,7 @@ module.exports = {
     });
   },
   login: (req, res) => {
-    User.findOne({email: req.body.email }, (err, user) => {
+    User.findOne({email: req.body.email}, (err, user) => {
       console.log(user)
       if(err){
         console.log('there was an error', err)

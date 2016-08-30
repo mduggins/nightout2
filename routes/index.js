@@ -11,6 +11,10 @@ module.exports = (app) => {
     res.render('signup.html');
   });
 
+  app.get('/about', (req, res) => {
+    res.render('about.html');
+  });
+
   app.get('/logout', AUTH.logout);
 
   app.post('/signup', AUTH.signup);

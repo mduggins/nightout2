@@ -31,7 +31,7 @@ mongoose.connect('mongodb://localhost/nightout', (err) => {
     console.log('mongo server did not start:', err);
   }else{
     console.log('mongo server started!');
-  }  
+  }
 });
 
 Routes(app);
