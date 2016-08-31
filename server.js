@@ -51,6 +51,6 @@ if(ENV === "production"){
       httpsConfig = { // https://nodejs.org/api/https.html
            key:  readFile('/etc/letsencrypt/live/nightout.site/privkey.pem'),
            cert: readFile('/etc/letsencrypt/live/nightout.site/cert.pem')
-      }
-  HTTPS.createServer( httpsConfig, app ).listen( 443 )
+      };
+  HTTPS.createServer( httpsConfig, app ).listen( 443 );
 }
