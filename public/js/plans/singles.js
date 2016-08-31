@@ -1,8 +1,8 @@
 angular.module("NightOut").controller('singlesCtrl', singlesCtrl);
 
-  singlesCtrl.$inject = ['NgMap','$scope']
+  singlesCtrl.$inject = ['NgMap','$scope','$http']
 
-  function singlesCtrl(NgMap, $scope){
+  function singlesCtrl(NgMap, $scope, $http){
     console.log('This is from the singlesCtrl')
     var sCtrl = this
     navigator.geolocation.getCurrentPosition(function(position){
