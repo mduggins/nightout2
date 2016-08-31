@@ -45,11 +45,12 @@ app.listen(PORT, (err) => {
   console.info('Server started!', PORT);
 });
 
-var HTTPS = require('https'),
-    readFile = require('fs').readFileSync,
-    httpsConfig = { // https://nodejs.org/api/https.html
-         key:  readFile('/etc/letsencrypt/live/nightout.site/privkey.pem'),
-         cert: readFile('/etc/letsencrypt/live/nightout.site/cert.pem')
-    }
-
-HTTPS.createServer( httpsConfig, app ).listen( ports.https );
+if(ENV === "production"){
+  var HTTPS = require('https'),
+      readFile = require('fs').readFileSync,
+      httpsConfig = { // https://nodejs.org/api/https.html
+           key:  readFile('/etc/letsencrypt/live/nightout.site/privkey.pem'),
+           cert: readFile('/etc/letsencrypt/live/nightout.site/cert.pem')
+      }
+  HTTPS.createServer( httpsConfig, app ).listen( 443 )
+}
