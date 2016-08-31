@@ -6,6 +6,8 @@ var express = require('express'),
     ejs = require('ejs'),
     Routes = require('./routes'),
     session = require('client-sessions'),
+    PORT = process.env.PORT || 3000,
+    ENV = process.env.NODE_ENV || "development",
     app = express();
 
 app.use(express.static(path.join(__dirname,'public')));
@@ -36,9 +38,18 @@ mongoose.connect('mongodb://localhost/nightout', (err) => {
 
 Routes(app);
 
-app.listen(3000, (err) => {
+app.listen(PORT, (err) => {
   if(err){
     console.error('Server did not start:', err);
   }
-  console.info('Server started!');
+  console.info('Server started!', PORT);
 });
+
+var HTTPS = require('https'),
+    readFile = require('fs').readFileSync,
+    httpsConfig = { // https://nodejs.org/api/https.html
+         key:  readFile('/etc/letsencrypt/live/nightout.site/privkey.pem'),
+         cert: readFile('/etc/letsencrypt/live/nightout.site/cert.pem')
+    }
+
+HTTPS.createServer( httpsConfig, app ).listen( ports.https );
