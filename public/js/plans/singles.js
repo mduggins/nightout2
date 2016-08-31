@@ -48,6 +48,17 @@ angular.module("NightOut").controller('singlesCtrl', singlesCtrl);
     }
   })
 
+  sCtrl.savePlan = function(){
+    $http.post('/dashboard/savePlan', sCtrl.site).then(function(response){
+      sCtrl.success(response)
+    });
+  }
+
+  sCtrl.success = function(data){
+    location.href = '/dashboard';
+    sCtrl.plans = data;
+  }
+
   sCtrl.typeFormat = function(place){
     var format = place.type.split('')
     format[0] = format[0].toUpperCase()
