@@ -28,7 +28,7 @@ ng-map {
 }
 
 #logo {
-  background-image: url('http://www.icon100.com/up/3959/48/118-Black-moon-phase-shape.png');
+  background-image: url('../images/moon.png');
   background-repeat: no-repeat;
   height: 48px;
   width: 48px;
@@ -68,7 +68,7 @@ ng-map {
 }
 
 #menu-icon {
-  background-image: url('http://webservices.lib.harvard.edu/hlportal/images/threeline.png');
+  background-image: url('../images/menu.png');
   height: 41px;
   width: 48px;
   display: none;
@@ -93,7 +93,7 @@ ng-map {
 }
 
 #myhome {
-  background-image: url('http://www.citi.io/wp-content/uploads/2015/08/1168-00-06.jpg');
+  background-image: url('../images/bg.jpg');
   height: 100vh;
   width: 100%;
   background-size: cover;
@@ -116,7 +116,7 @@ ng-map {
 }
 
 #about-image {
-  background-image: url('http://www.flameseatery.com/common/images/bg-bar.jpg');
+  background-image: url('../images/bg-bar.jpg');
   background-repeat: no-repeat;
   width: 100%;
   height: 300px;
