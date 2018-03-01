@@ -5,10 +5,22 @@ angular.module("NightOut").controller('singlesCtrl', singlesCtrl);
   function singlesCtrl(NgMap, $scope, $http){
     console.log('This is from the singlesCtrl')
     var sCtrl = this
-    navigator.geolocation.getCurrentPosition(function(position){
+
+    if (navigator.geolocation){
+      console.log("Geolocation available")
+      navigator.geolocation.getCurrentPosition(sCtrl.setPositionCoords, sCtrl.setPositionCoordsError);
+    } else {
+      console.log("Geolocation not available")
+    }
+
+    sCtrl.setPositionCoords = function(position){
       sCtrl.coords = {lat: position.coords.latitude, lng: position.coords.longitude}
-      console.log(sCtrl.coords)
-    })
+      console.log(sCtrl.coords);
+    }
+
+    sCtrl.setPositionCoordsError = function(err){
+      console.log("Coords not set!", err)
+    }
 
     sCtrl.placeTypes = ['restaurant', 'bar', 'night_club']
 
